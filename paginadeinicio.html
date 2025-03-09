@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&D GAS</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+
+</head>
+
+<script>
+    document.getElementById("login-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // Simulación de autenticación (Reemplázalo con lógica real)
+        if (email === "admin@example.com" && password === "admin123") {
+            window.location.href = "index.html"; // Redirigir si es válido
+        } else {
+            document.getElementById("error-message").textContent = "Correo o contraseña incorrectos.";
+        }
+    });
+</script>
+
+<header>
+    <div class="header-left">
+        <img src="img/logo.png" alt="" class="logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="login.html">Iniciar Sesión</a></li>
+            <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><button id="ver-carrito">🛒 Carrito (<span id="cantidad-carrito">0</span>)</button></li>
+        </ul>
+
+    </nav>
+</header>
+
+<section id="productos" class="productos">
+    <h2>Nuestros Productos</h2>
+    <div class="contenedor-productos">
+        <div class="producto">
+            <img src="img/chimenea.jpg" alt="Primera Opcion">
+            <h3>Chimenea Portatil</h3>
+            <p class="descripcion">Diseño elegante y moderno para cualquier espacio.</p>
+            <p class="precio">$2'500.000 COP</p>
+            <button onclick="agregarAlCarrito('Chimenea Moderna', 2500000)">Agregar al Carrito</button>
+        </div>
+
+        <div class="producto">
+            <img src="img/calentador.jpg" alt="Calentador Eléctrico">
+            <h3>Calentador De Muy Buena Calidad</h3>
+            <p class="descripcion">Calor eficiente con bajo consumo de energía.</p>
+            <p class="precio">$1'500.000 COP</p>
+            <button onclick="agregarAlCarrito('Calentador Eléctrico', 1500000)">Agregar al Carrito</button>
+        </div>
+
+        <div class="producto">
+            <img src="img/chimenea2.jpg" alt="Estufa a Gas">
+            <h3>Chimenea con Alcohol</h3>
+            <p class="descripcion">Perfecta para exteriores e interiores.</p>
+            <p class="precio">$1'800.000 COP</p>
+            <button onclick="agregarAlCarrito('Estufa a Gas', 1800000)">Agregar al Carrito</button>
+        </div>
+
+        <div class="producto">
+            <img src="img/calentador2.jpg" alt="Horno Industrial">
+            <h3>Calentador De Gran Potencia</h3>
+            <p class="descripcion">Alta resistencia y eficiencia para tus duchas.</p>
+            <p class="precio">$3'200.000 COP</p>
+            <button onclick="agregarAlCarrito('Horno Industrial', 3200000)">Agregar al Carrito</button>
+        </div>
+    </div>
+        <div class="producto">
+            <img src="img/chimenea3.jpg" alt="Horno Industrial">
+            <h3>Chimeneas De Calidad</h3>
+            <p class="descripcion">Alta resistencia y eficiencia para esos dias frios.</p>
+            <p class="precio">$3'200.000 COP</p>
+            <button onclick="agregarAlCarrito('Horno Industrial', 3200000)">Agregar al Carrito</button>
+        </div>
+    </div>
+        <div class="producto"></div>
+        <section id="sobre-nosotros" class="sobre-nosotros">
+            <h2>Sobre Nosotros</h2>
+            <div class="contenido">
+                <img src="img/favicon.png" alt="Nuestra empresa">
+                <p>
+                    En <strong>M&D GAS</strong>, nos especializamos en la venta de chimeneas y calentadores de alta
+                    calidad.
+                    Nuestro compromiso es ofrecer productos eficientes, seguros y elegantes para el confort de tu hogar.
+                    Con años de experiencia en el sector, garantizamos tecnología de punta y un servicio excepcional.
+                </p>
+            </div>
+            <section class="sobre-nosotros animado">
+            </section>
+
+            <section id="carrito" class="carrito oculto">
+                <h2>Carrito de Compras</h2>
+                <ul id="lista-carrito"></ul> <!-- Aquí se muestran los productos -->
+                <p>Total: $<span id="total">0</span> COP</p>
+                <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+                <button onclick="finalizarCompra()">Finalizar Compra</button>
+            </section>
+    </div>
+
+
+
+    </div>
+</section>
+
+
+<section id="testimonios" class="testimonios">
+    <h2>Testimonios</h2>
+    <div class="testimonio">
+        <p>"La mejor chimenea que he comprado. Funciona perfectamente y luce increíble en mi sala."</p>
+        <span>- Juan Pérez</span>
+    </div>
+    <div class="testimonio">
+        <p>"El calentador eléctrico es muy eficiente. Me ha ayudado mucho en invierno."</p>
+        <span>- María Gómez</span>
+    </div>
+</section>
+
+<section id="carrito" class="carrito oculto">
+    <h2>Carrito de Compras</h2>
+    <ul id="lista-carrito"></ul>
+    <p>Total: $<span id="total">0</span> COP</p>
+    <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    <button onclick="finalizarCompra()">Finalizar Compra</button>
+</section>
+
+<section id="contacto" class="contacto">
+    <h2>Contacto</h2>
+    <form id="form-contacto">
+        <input type="text" id="nombre" placeholder="Tu Nombre" required>
+        <input type="email" id="email" placeholder="Tu Correo" required>
+        <textarea id="mensaje" placeholder="Tu Mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+
+<section id="galeria" class="galeria animado">
+    <div class="imagenes">
+        <img src="img/haceb.jpg" alt="Imagen 1" class="imagen-ajustada">
+        <img src="img/bosch.png" alt="Imagen 2" class="imagen-ajustada">
+        <img src="img/rhem.jpg" alt="Imagen 3" class="imagen-ajustada">
+        <img src="img/classic.jpg" alt="Imagen 3" class="imagen-ajustada">
+    </div>
+</section>
+
+<!-- Lightbox (imagen ampliada) -->
+<div id="lightbox" class="lightbox">
+    <span id="cerrar-lightbox">&times;</span>
+    <img id="imagen-ampliada" src="" alt="">
+</div>
+
+
+<script src="js/script.js"></script>
+</body>
+
+</html>
